@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class CombatManager : MonoBehaviour
 {
+    public GameObject drawPilePrefab;
     public GameObject drawPile;
-    public DrawPile drawPileComp;
+    public GameObject discardPilePrefab;
     public GameObject discardPile;
-    public DiscardPile discardPileComp;
+    public GameObject handPrefab;
     public GameObject hand;
-    public Hand handComp;
+    public GameObject combatUiPrefab;
+    public GameObject combatUi;
 
     // Start is called before the first frame update
     void Start()
     {
-        drawPileComp = drawPile.GetComponent<DrawPile>();
-        discardPileComp = discardPile.GetComponent<DiscardPile>();
-        handComp = hand.GetComponent<Hand>();
+        drawPile = Instantiate(drawPilePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        discardPile = Instantiate(discardPilePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        hand = Instantiate(handPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Debug.Log("Creating UI");
+        combatUi = Instantiate(combatUiPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Debug.Log(combatUi);
     }
 
     // Update is called once per frame

@@ -47,12 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd31057e4c741564c9e600de60f54e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drawPilePrefab: {fileID: 756038450390584367, guid: 6fc7bd1f9a0d42a4db629838d5c9c6eb, type: 3}
   drawPile: {fileID: 0}
-  drawPileComp: {fileID: 0}
+  discardPilePrefab: {fileID: 7713224761493403738, guid: 3bf64b5aa9790714692a1104f729e86b, type: 3}
   discardPile: {fileID: 0}
-  discardPileComp: {fileID: 0}
+  handPrefab: {fileID: 2643859160512742996, guid: 7e7abbd7831fc6643a92b8baa93c0b6e, type: 3}
   hand: {fileID: 0}
-  handComp: {fileID: 0}
+  combatUiPrefab: {fileID: 5691139942451863483, guid: 9a74464243a68704c9e74525bfef9351, type: 3}
+  combatUi: {fileID: 0}
 --- !u!1001 &2340325660573889874
 PrefabInstance:
   m_ObjectHideFlags: 0
