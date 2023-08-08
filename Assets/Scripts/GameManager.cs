@@ -11,8 +11,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        deck = gameObject.AddComponent<Deck>();
-        combatManagerComp = Instantiate(combatManager, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<CombatManager>();
+        deck = GetComponent<Deck>();
     }
 
     // Start is called before the first frame update

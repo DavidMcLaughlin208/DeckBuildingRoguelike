@@ -6,18 +6,17 @@ public class Deck : MonoBehaviour
 {
     
     public List<Card> cards;
+    public GameObject cardPrefab;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        cards = new List<Card>
-        {
-            // Default starter deck
-            gameObject.AddComponent<Shot>(),
-            gameObject.AddComponent<Shot>(),
-            gameObject.AddComponent<LayTrap>(),
-            gameObject.AddComponent<PiercingShot>(),
-            gameObject.AddComponent<Grenade>(),
-        };
+        cards = new List<Card>(cards);
+        for (int i = 0; i < 6; i++) {
+            GameObject newCard = Instantiate(cardPrefab);
+            newCard.SetActive(false);
+            cards.Add(newCard.GetComponent<Card>());
+        }
+
     }
 
     // Update is called once per frame
