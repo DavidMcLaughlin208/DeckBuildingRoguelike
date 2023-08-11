@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hand : MonoBehaviour
 {
@@ -18,14 +19,14 @@ public class Hand : MonoBehaviour
 
     private void HandSizeChanged()
     {
-        float width = cardPrefab.GetComponent<SpriteRenderer>().bounds.size.x;
+        float width = cardPrefab.GetComponent<RectTransform>().sizeDelta.x;
         float buffer = 0.02f;
         float cardsContainerSize = cards.Count * (width + buffer);
         float sizePerCard = cardsContainerSize / cards.Count;
         for (int i = 0; i < cards.Count; i++)
         {
             Card card = cards[i];
-            card.desiredPos = new Vector2(transform.position.x - (cardsContainerSize / 2) + sizePerCard * i, transform.position.y);
+            card.SetDesiredPos(new Vector3(transform.position.x - (cardsContainerSize / 2) + sizePerCard * i, transform.position.y, 1), null);
         }
     }
 
@@ -40,8 +41,9 @@ public class Hand : MonoBehaviour
 
     public void Discard(Card toDiscard)
     {
-        toDiscard.desiredPos = discardPile.transform.position;
+        toDiscard.SetDesiredPos(discardPile.transform.position, () => Destroy(toDiscard.gameObject));
         cards.Remove(toDiscard);
+        discardPile.Discard(toDiscard);
         HandSizeChanged(); 
     }
 
@@ -50,7 +52,10 @@ public class Hand : MonoBehaviour
         Card newCard = drawPile.Draw();
         if (newCard != null) {
             cards.Add(newCard);
-            HandSizeChanged();    
+            newCard.hand = this;
+            newCard.transform.SetParent(transform);
+            newCard.transform.localScale = new Vector3(1,1,1);
+            HandSizeChanged();
         }
     }
 

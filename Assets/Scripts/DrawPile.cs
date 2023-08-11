@@ -8,6 +8,7 @@ public class DrawPile : MonoBehaviour
     public TextMeshProUGUI drawText; 
     public List<Card> cards;
     public CombatManager cm;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class DrawPile : MonoBehaviour
             cards.RemoveAt(0);
             drawnCard.gameObject.SetActive(true);
             drawnCard.transform.position = transform.position;
+
             return drawnCard;
         }
         return null;
