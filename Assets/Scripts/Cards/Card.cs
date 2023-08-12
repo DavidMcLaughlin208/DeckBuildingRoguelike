@@ -13,6 +13,9 @@ public class Card : MonoBehaviour, IPointerClickHandler
     public GameObject myGameObject;
     private bool reachedDesiredPos;
     private Action moveCallback;
+    public Cards.CardData cardData;
+
+    public bool grabbed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,23 +26,31 @@ public class Card : MonoBehaviour, IPointerClickHandler
     void Update()
     {
         float step =  speed * Time.deltaTime; // calculate distance to move
-        if (transform.position != desiredPos) {
-            transform.position = Vector3.MoveTowards(transform.position, desiredPos, step);
-        } else if (!reachedDesiredPos) {
-            reachedDesiredPos = true;
-            moveCallback?.Invoke();
+        if (grabbed) {
+            Vector3 mousePos = Input.mousePosition;
+            transform.position = mousePos;
+        } else {
+            if (transform.position != desiredPos) {
+                transform.position = Vector3.MoveTowards(transform.position, desiredPos, step);
+            } else if (!reachedDesiredPos) {
+                reachedDesiredPos = true;
+                moveCallback?.Invoke();
+            }
         }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        hand.Discard(this);
-        Debug.Log(this);
+        //grabbed = !grabbed;
     }
     public void SetDesiredPos(Vector3 desiredPos, Action callback) 
     {
         this.desiredPos = desiredPos;
         reachedDesiredPos = false;
         moveCallback = callback;
+    }
+    public void SetData(Cards.CardData cardData)
+    {
+        this.cardData = cardData;
     }
 }

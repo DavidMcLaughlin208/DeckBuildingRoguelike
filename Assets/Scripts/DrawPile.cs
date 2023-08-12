@@ -6,8 +6,9 @@ using TMPro;
 public class DrawPile : MonoBehaviour
 {
     public TextMeshProUGUI drawText; 
-    public List<Card> cards;
+    public List<Cards.CardData> cards = new List<Cards.CardData>();
     public CombatManager cm;
+    public GameObject cardPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -26,17 +27,18 @@ public class DrawPile : MonoBehaviour
     public Card Draw()
     {   
         if (cards.Count > 0) {
-            Card drawnCard = cards[0];
+            Cards.CardData drawnCard = cards[0];
             cards.RemoveAt(0);
-            drawnCard.gameObject.SetActive(true);
-            drawnCard.transform.position = transform.position;
+            Card newCard = Instantiate(cardPrefab).GetComponent<Card>();
+            newCard.SetData(drawnCard);
+            newCard.transform.position = transform.position;
 
-            return drawnCard;
+            return newCard.GetComponent<Card>();
         }
         return null;
     }
 
-    public void SetCards(List<Card> cards) {
+    public void SetCards(List<Cards.CardData> cards) {
         this.cards = cards;
     }
 
@@ -44,7 +46,7 @@ public class DrawPile : MonoBehaviour
     {
         for (int i = 0; i < cards.Count; i++) 
         {
-            Card temp = cards[i];
+            Cards.CardData temp = cards[i];
             int rand = Random.Range(i, cards.Count);
             cards[i] = cards[rand];
             cards[rand] = temp;

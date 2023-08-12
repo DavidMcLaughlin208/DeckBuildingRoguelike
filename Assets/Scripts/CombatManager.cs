@@ -18,7 +18,7 @@ public class CombatManager : MonoBehaviour
 
     void Start()
     {
-        drawPile.SetCards(new List<Card>(gm.deck.cards));
+        drawPile.SetCards(new List<Cards.CardData>(gm.deck.cards));
     }
 
     // Update is called once per frame

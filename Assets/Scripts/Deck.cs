@@ -5,16 +5,14 @@ using UnityEngine;
 public class Deck : MonoBehaviour
 {
     
-    public List<Card> cards;
+    public List<Cards.CardData> cards;
     public GameObject cardPrefab;
     // Start is called before the first frame update
     void Awake()
     {
-        cards = new List<Card>(cards);
+        cards = new List<Cards.CardData>();
         for (int i = 0; i < 6; i++) {
-            GameObject newCard = Instantiate(cardPrefab);
-            newCard.SetActive(false);
-            cards.Add(newCard.GetComponent<Card>());
+            cards.Add(Cards.cards["Traveler"]["shot"]);
         }
 
     }

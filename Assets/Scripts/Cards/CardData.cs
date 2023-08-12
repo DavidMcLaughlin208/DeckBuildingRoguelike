@@ -1,22 +1,50 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections.Generic;
-static class Cards
+public static class Cards
 {
+
+    public enum Target {
+        Slot,
+        Player,
+        AllSlots
+    };
+
+    public enum EffectType {
+        Damage,
+        Acid,
+        Fire,
+        Piercing
+    };
+
+    public class Effect {
+        public EffectType effectType;
+        public int value;
+
+        public Effect(EffectType effectType, int value) {
+            this.effectType = effectType;
+            this.value = value;
+        }
+    };
 
     public class CardData {
         public string Name { get; set; }
         public string Description { get; set; }
+        public Target target { get; set; }
+        public List<Effect> effects { get; set; }
 
-        public CardData(string Name, string Description) {
+        public CardData(string Name, string Description, Target target, List<Effect> effects) {
             this.Name = Name;
             this.Description = Description;
+            this.target = target;
+            this.effects = effects;
         }
     };
 
     public static Dictionary<string, Dictionary<string, CardData>> cards = new Dictionary<string, Dictionary<string, CardData>>() {
         {"Traveler", new Dictionary<string, CardData>() {
-            {"shot", new CardData("Shot", "Shoots")},
+            {"shot", new CardData("Shot", "Shoots a bullet dealing 1 damage", Target.Slot, new List<Effect>{ new Effect(EffectType.Damage, 1) } ) },
+            {"indendiary-shot", new CardData("Incendiary Shot", "Shoots an incendiary bullet dealing 1 damage and inflicting 1 Fire", Target.Slot, new List<Effect>{ new Effect(EffectType.Damage, 1) } ) },
         }},
     };
 }

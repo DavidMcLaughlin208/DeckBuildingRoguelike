@@ -41,6 +41,7 @@ public class Hand : MonoBehaviour
 
     public void Discard(Card toDiscard)
     {
+        toDiscard.grabbed = false;
         toDiscard.SetDesiredPos(discardPile.transform.position, () => Destroy(toDiscard.gameObject));
         cards.Remove(toDiscard);
         discardPile.Discard(toDiscard);

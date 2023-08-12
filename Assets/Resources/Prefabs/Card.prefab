@@ -89,7 +89,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desiredPos: {x: 0, y: 0, z: 0}
-  speed: 1400
+  speed: 4000
   discardPile: {fileID: 0}
   hand: {fileID: 0}
   myGameObject: {fileID: 0}
+  grabbed: 0
