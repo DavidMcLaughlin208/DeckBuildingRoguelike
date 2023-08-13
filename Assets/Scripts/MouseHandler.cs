@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
+using System;
 
 public class MouseHandler : MonoBehaviour
 {
@@ -46,13 +46,26 @@ public class MouseHandler : MonoBehaviour
                     heldCard = card;
                     return;
                 }
-                bool isGeneralPlay = result.gameObject.tag == "GeneralPlay";
-                if (heldCard && isGeneralPlay) {
-                    hand.Discard(heldCard);
-                    heldCard = null;
-                    return;
+                Cards.Target target;
+                bool isTarget = Enum.TryParse(result.gameObject.tag, out target);
+                if (isTarget && heldCard && heldCard.cardData.target == target) {
+                    Slot slot = result.gameObject.GetComponent<Slot>();
+                    if (slot) {
+                        bool meetsReqs = slot.CheckRequirements(heldCard.cardData.requirements);
+                        if (meetsReqs) {
+                            hand.Discard(heldCard);
+                            heldCard = null;
+                            return;
+                        }
+                    }
                 }
 
+                
+            }
+            DropCard();
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse1)) {
+            if (heldCard) {
                 DropCard();
             }
         }
