@@ -53,6 +53,7 @@ public class MouseHandler : MonoBehaviour
                     if (slot) {
                         bool meetsReqs = slot.CheckRequirements(heldCard.cardData.requirements);
                         if (meetsReqs) {
+                            slot.PlayCard(heldCard);
                             hand.Discard(heldCard);
                             heldCard = null;
                             return;

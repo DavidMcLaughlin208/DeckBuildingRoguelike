@@ -15,6 +15,7 @@ public class Slot : MonoBehaviour
             enemy = Instantiate(enemyPrefab, transform).GetComponent<Enemy>();
             enemy.transform.localScale = new Vector3(-1, 1, 1);
             enemy.transform.localScale = new Vector3(1,1,1);
+            enemy.SetEnemyData(Enemies.enemies["ectomorph"]);
         }
     }
 
@@ -32,5 +33,12 @@ public class Slot : MonoBehaviour
             }
         }
         return true;
+    }
+
+    public void PlayCard(Card card)
+    {
+        if (enemy) {
+            enemy.PlayCard(card.cardData.effects);
+        }
     }
 }

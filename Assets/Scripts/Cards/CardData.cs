@@ -16,8 +16,8 @@ public static class Cards
     };
 
     public enum EffectType {
-        Damage,
         Acid,
+        Damage,
         Fire,
         Piercing,
         Armor,
