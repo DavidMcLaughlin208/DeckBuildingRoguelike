@@ -1,20 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour
+public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public int slotPos;
     public Enemy enemy;
     public GameObject enemyPrefab;
+    public MouseHandler mouseHandler;
+
      // Start is called before the first frame update
     void Start()
     {
         if (Random.Range(0, 100) > 50) {
             enemy = Instantiate(enemyPrefab, transform).GetComponent<Enemy>();
-            enemy.transform.localScale = new Vector3(-1, 1, 1);
-            enemy.transform.localScale = new Vector3(1,1,1);
             enemy.SetEnemyData(Enemies.enemies["ectomorph"]);
         }
     }
@@ -23,6 +23,20 @@ public class Slot : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnPointerEnter(PointerEventData pointerEventData)
+    {
+        // if (mouseHandler.heldCard != null && mouseHandler.heldCard.cardData.target == Cards.Target.Slot) {
+        //     mouseHandler.lr.SetPosition(1, transform.position);
+        // }
+        //Output to console the GameObject's name and the following message
+        Debug.Log("Cursor Entering " + name + " GameObject");
+    }
+
+    public void OnPointerExit(PointerEventData pointerEventData)
+    {
+
     }
 
     public bool CheckRequirements(List<Cards.Requirements> reqs) {

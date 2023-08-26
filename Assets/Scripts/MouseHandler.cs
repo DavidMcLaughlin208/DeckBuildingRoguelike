@@ -11,8 +11,10 @@ public class MouseHandler : MonoBehaviour
     public GraphicRaycaster m_Raycaster;
     PointerEventData m_PointerEventData;
     EventSystem m_EventSystem;
-    Card heldCard = null;
+    public Card heldCard = null;
     public Hand hand;
+    public bool hasControl = true;
+    public LineRenderer lr;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,9 @@ public class MouseHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if (heldCard != null) {
+        //     lr.SetPosition(0, Input.mousePosition);
+        // }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             //Set up the new Pointer Event
@@ -48,7 +53,7 @@ public class MouseHandler : MonoBehaviour
                 }
                 Cards.Target target;
                 bool isTarget = Enum.TryParse(result.gameObject.tag, out target);
-                if (isTarget && heldCard && heldCard.cardData.target == target) {
+                if (hasControl && isTarget && heldCard && heldCard.cardData.target == target) {
                     Slot slot = result.gameObject.GetComponent<Slot>();
                     if (slot) {
                         bool meetsReqs = slot.CheckRequirements(heldCard.cardData.requirements);
@@ -73,6 +78,7 @@ public class MouseHandler : MonoBehaviour
     }
     void DropCard() {
         if (heldCard) {
+            heldCard.speed = 2000;
             heldCard.grabbed = false;
             heldCard = null;
         }

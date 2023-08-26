@@ -92,4 +92,4 @@ MonoBehaviour:
   discardPile: {fileID: 4785599976871096493, guid: 3bf64b5aa9790714692a1104f729e86b, type: 3}
   cards: []
   cardPrefab: {fileID: 1332499596442914785, guid: 69b2d98ba5c71b14b9a11a55cc929852, type: 3}
-  handUI: {fileID: 0}
+  scalar: 7000

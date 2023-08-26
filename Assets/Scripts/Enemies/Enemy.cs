@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Enemy : MonoBehaviour
     public int health;
     public Enemies.EnemyData enemyData;
     public Dictionary<Cards.EffectType, int> activeEffects = new Dictionary<Cards.EffectType, int>();
+    public Slider healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,16 @@ public class Enemy : MonoBehaviour
     public void SetEnemyData(Enemies.EnemyData enemyData) {
         this.enemyData = enemyData;
         health = enemyData.health;
+        healthBar.maxValue = health;
+    }
+
+    public void UpdateHealth(int newValue)
+    {
+        health = newValue;
+        healthBar.value = health;
+        if (health <= 0) {
+            Destroy(gameObject);
+        }
     }
 
     public void ApplyAcid(int amount)
@@ -52,7 +64,7 @@ public class Enemy : MonoBehaviour
 
         if (damage > 0) 
         {
-            health -= damage;
+            UpdateHealth(health - damage);
         }
     }
 

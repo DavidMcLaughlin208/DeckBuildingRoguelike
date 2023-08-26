@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
-public class Card : MonoBehaviour, IPointerClickHandler
+public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Vector3 desiredPos;
     public float speed = 250f;
@@ -14,6 +15,8 @@ public class Card : MonoBehaviour, IPointerClickHandler
     private bool reachedDesiredPos;
     private Action moveCallback;
     public Cards.CardData cardData;
+    public TextMeshProUGUI cardTitle;
+    public TextMeshProUGUI cardDescription;
 
     public bool grabbed = false;
     // Start is called before the first frame update
@@ -43,8 +46,18 @@ public class Card : MonoBehaviour, IPointerClickHandler
     {
         //grabbed = !grabbed;
     }
-    public void SetDesiredPos(Vector3 desiredPos, Action callback) 
+
+    public void OnPointerEnter(PointerEventData eventData)
     {
+        hand.SetHoveredCard(this);
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        hand.UnsetHoveredCard(this);
+    }
+    public void SetDesiredPos(Vector3 desiredPos, float speed, Action callback) 
+    {
+        this.speed = speed;
         this.desiredPos = desiredPos;
         reachedDesiredPos = false;
         moveCallback = callback;
@@ -52,5 +65,7 @@ public class Card : MonoBehaviour, IPointerClickHandler
     public void SetData(Cards.CardData cardData)
     {
         this.cardData = cardData;
+        cardTitle.text = cardData.Name;
+        cardDescription.text = cardData.Description;
     }
 }
