@@ -11,8 +11,11 @@ public class Deck : MonoBehaviour
     void Awake()
     {
         cards = new List<Cards.CardData>();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 3; i++) {
             cards.Add(Cards.cards["Traveler"]["shot"]);
+        }
+        for (int i = 0; i < 3; i++) {
+            cards.Add(Cards.cards["Traveler"]["incendiary-shot"]);
         }
 
     }

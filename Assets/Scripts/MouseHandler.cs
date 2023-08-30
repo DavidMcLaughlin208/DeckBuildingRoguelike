@@ -78,7 +78,7 @@ public class MouseHandler : MonoBehaviour
     }
     void DropCard() {
         if (heldCard) {
-            heldCard.speed = 2000;
+            heldCard.posSpeed = 2000;
             heldCard.grabbed = false;
             heldCard = null;
         }

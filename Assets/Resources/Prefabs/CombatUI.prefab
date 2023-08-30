@@ -395,6 +395,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotPos: 3
+  enemy: {fileID: 0}
+  enemyPrefab: {fileID: 0}
+  mouseHandler: {fileID: 0}
 --- !u!1 &3399248870324224217
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,6 +805,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotPos: 2
+  enemy: {fileID: 0}
+  enemyPrefab: {fileID: 0}
+  mouseHandler: {fileID: 0}
 --- !u!1 &5102942154470952579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,10 +1128,10 @@ RectTransform:
   m_Children:
   - {fileID: 5090612862633315258}
   - {fileID: 3436465634950647415}
-  - {fileID: 3968264530102487509}
   - {fileID: 359808364586399743}
   - {fileID: 8011806114250774606}
   - {fileID: 4486164073514981861}
+  - {fileID: 3968264530102487509}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1285,6 +1291,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotPos: 0
+  enemy: {fileID: 0}
+  enemyPrefab: {fileID: 0}
+  mouseHandler: {fileID: 0}
 --- !u!1 &6765571301051204073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,6 +1383,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotPos: 1
+  enemy: {fileID: 0}
+  enemyPrefab: {fileID: 0}
+  mouseHandler: {fileID: 0}
 --- !u!1 &6981734925573718306
 GameObject:
   m_ObjectHideFlags: 0

@@ -67,6 +67,19 @@ public class Hand : MonoBehaviour
             }
             card.SetDesiredPos(newPos, speed, null);
         }
+
+        if (hoveredCard != null)
+        {
+            hoveredCard.transform.SetSiblingIndex(cards.Count - 1);
+        }
+        int startIdx = 0;
+        for (int i = 0; i < cards.Count; i++)
+        {
+            Card card = cards[i];
+            if (card == hoveredCard) continue;
+            card.transform.SetSiblingIndex(startIdx++);
+        }
+        
     }
 
     public void UnsetHoveredCard(Card card)
