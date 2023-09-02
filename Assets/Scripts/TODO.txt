@@ -1,0 +1,5 @@
+List of things to work on:
+-Cards flipping
+-Turns
+-Action Queue
+-Placeholder Character

@@ -56,6 +56,7 @@ MonoBehaviour:
   hand: {fileID: 2965069445990474891}
   hasControl: 1
   lr: {fileID: 7661931534542120943}
+  combatManager: {fileID: 9065044882640557094}
 --- !u!223 &928684313196695651
 Canvas:
   m_ObjectHideFlags: 0
@@ -345,17 +346,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 3393457655551128388}
     m_Modifications:
     - target: {fileID: 1807958076218963548, guid: 9a74464243a68704c9e74525bfef9351, type: 3}
-      propertyPath: enemyPrefab
-      value: 
-      objectReference: {fileID: 7645748831954192176, guid: 900d4d4284bd288468e579da8220c2d9, type: 3}
-    - target: {fileID: 1807958076218963548, guid: 9a74464243a68704c9e74525bfef9351, type: 3}
       propertyPath: mouseHandler
       value: 
       objectReference: {fileID: 534749617877696113}
-    - target: {fileID: 2314254751202680680, guid: 9a74464243a68704c9e74525bfef9351, type: 3}
-      propertyPath: enemyPrefab
-      value: 
-      objectReference: {fileID: 7645748831954192176, guid: 900d4d4284bd288468e579da8220c2d9, type: 3}
     - target: {fileID: 2314254751202680680, guid: 9a74464243a68704c9e74525bfef9351, type: 3}
       propertyPath: mouseHandler
       value: 
@@ -449,17 +442,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9065044882640557094}
     - target: {fileID: 7704501121781027631, guid: 9a74464243a68704c9e74525bfef9351, type: 3}
-      propertyPath: enemyPrefab
-      value: 
-      objectReference: {fileID: 7645748831954192176, guid: 900d4d4284bd288468e579da8220c2d9, type: 3}
-    - target: {fileID: 7704501121781027631, guid: 9a74464243a68704c9e74525bfef9351, type: 3}
       propertyPath: mouseHandler
       value: 
       objectReference: {fileID: 534749617877696113}
-    - target: {fileID: 7874328428526683806, guid: 9a74464243a68704c9e74525bfef9351, type: 3}
-      propertyPath: enemyPrefab
-      value: 
-      objectReference: {fileID: 7645748831954192176, guid: 900d4d4284bd288468e579da8220c2d9, type: 3}
     - target: {fileID: 7874328428526683806, guid: 9a74464243a68704c9e74525bfef9351, type: 3}
       propertyPath: mouseHandler
       value: 

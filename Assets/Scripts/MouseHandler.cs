@@ -15,6 +15,7 @@ public class MouseHandler : MonoBehaviour
     public Hand hand;
     public bool hasControl = true;
     public LineRenderer lr;
+    public CombatManager combatManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,13 +59,22 @@ public class MouseHandler : MonoBehaviour
                     if (slot) {
                         bool meetsReqs = slot.CheckRequirements(heldCard.cardData.requirements);
                         if (meetsReqs) {
-                            slot.PlayCard(heldCard);
+                            combatManager.AppendToCombatQueue(heldCard, slot);
                             hand.Discard(heldCard);
                             heldCard = null;
                             return;
                         }
                     }
+                    if (target == Cards.Target.General)
+                    {
+                        //bool meetsReqs = combatManager.CheckRequirements(heldCard.cardData.requirements);
+                        combatManager.AppendToCombatQueue(heldCard, null);
+                        hand.Discard(heldCard);
+                        heldCard = null;
+                        return;
+                    }
                 }
+
 
                 
             }
