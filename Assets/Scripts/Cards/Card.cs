@@ -23,6 +23,7 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public TextMeshProUGUI cardDescription;
 
     public bool grabbed = false;
+    public bool grabbable = true;
     // Start is called before the first frame update
     void Awake()
     {
@@ -67,14 +68,20 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        hand.SetHoveredCard(this);
-        transform.localScale = new Vector3(1.5f, 1.5f, 1);
-        SetDesiredScale(new Vector3(1.5f, 1.5f, 1), 1, null);
+        if (grabbable)
+        {
+            hand.SetHoveredCard(this);
+            transform.localScale = new Vector3(1.5f, 1.5f, 1);
+            SetDesiredScale(new Vector3(1.5f, 1.5f, 1), 1, null);
+        }
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        hand.UnsetHoveredCard(this);
-        SetDesiredScale(Vector3.one, 20f, null);
+        if (grabbable)
+        {
+            hand.UnsetHoveredCard(this);
+            SetDesiredScale(Vector3.one, 20f, null);
+        }
     }
     public void SetDesiredPos(Vector3 desiredPos, float speed, Action callback) 
     {

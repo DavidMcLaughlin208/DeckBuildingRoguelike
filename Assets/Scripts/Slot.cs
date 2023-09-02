@@ -52,7 +52,7 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void PlayCard(Card card)
     {
         if (enemy) {
-            enemy.PlayCard(card.cardData.effects);
+            enemy.PlayCard(card);
         }
     }
 }

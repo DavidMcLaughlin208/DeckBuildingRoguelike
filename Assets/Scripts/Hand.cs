@@ -35,7 +35,9 @@ public class Hand : MonoBehaviour
     public void Discard(Card toDiscard)
     {
         toDiscard.grabbed = false;
+        toDiscard.grabbable = false;
         toDiscard.SetDesiredPos(discardPile.transform.position, 2000, () => Destroy(toDiscard.gameObject));
+        toDiscard.SetDesiredScale(new Vector3(0.6f,0.6f,1), 10, null);
         cards.Remove(toDiscard);
         discardPile.Discard(toDiscard);
         HandSizeChanged(); 
@@ -98,7 +100,8 @@ public class Hand : MonoBehaviour
             cards.Add(newCard);
             newCard.hand = this;
             newCard.transform.SetParent(transform);
-            newCard.transform.localScale = new Vector3(1,1,1);
+            newCard.transform.localScale = new Vector3(0.6f,0.6f,1);
+            newCard.SetDesiredScale(Vector3.one, 1, null);
             HandSizeChanged();
         }
     }

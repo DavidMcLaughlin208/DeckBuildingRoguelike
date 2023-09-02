@@ -5,14 +5,13 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
+public class Character : MonoBehaviour
 {
-    public string spritePath;
-    public int health;
-    public Enemies.EnemyData enemyData;
-    public Dictionary<Cards.EffectType, int> activeEffects = new Dictionary<Cards.EffectType, int>();
-    public Slider healthBar;
 
+    public Characters.CharacterData characterData;
+    public int health;
+    public Slider healthBar;
+    public Dictionary<Cards.EffectType, int> activeEffects = new Dictionary<Cards.EffectType, int>();
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +19,6 @@ public class Enemy : MonoBehaviour
         {
             activeEffects.Add(i, 0);
         }
-        
     }
 
     // Update is called once per frame
@@ -29,10 +27,10 @@ public class Enemy : MonoBehaviour
         
     }
 
-    public void SetEnemyData(Enemies.EnemyData enemyData) {
-        this.enemyData = enemyData;
-        health = enemyData.health;
-        healthBar.maxValue = health;
+    public void SetCharacterData(Characters.CharacterData characterData)
+    {
+        health = characterData.health;
+        this.characterData = characterData;
     }
 
     public void UpdateHealth(int newValue)
@@ -71,6 +69,7 @@ public class Enemy : MonoBehaviour
     public void ApplyFire(int amount) {
         activeEffects[Cards.EffectType.Fire] = activeEffects[Cards.EffectType.Fire] + 1;
     }
+
 
     public void PlayCard(Card card)
     {
